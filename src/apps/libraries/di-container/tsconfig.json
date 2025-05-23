@@ -1,0 +1,13 @@
+{
+  "extends": ["./../../../../tsconfig.json"],
+  "compilerOptions": {
+    // emit .d.ts declaration files (outDir)
+    "declaration": true,
+    // Tells TypeScript to emit .tsbuildinfo files. This tells TypeScript that your 
+    // project is part of a monorepo, and also helps it to cache builds to run faster.
+    "composite": true,
+    // .d.ts -> .d.ts.map -> see original implementation
+    // not just header definitions
+    "declarationMap": true
+  }
+}

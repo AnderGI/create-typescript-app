@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node 22.15.0",
+  "_version": "22.15.0",
+
+  "compilerOptions": {
+    // Specifies which built-in JavaScript APIs (and their type definitions) 
+    // are available in the global scope. "es2023" enables modern features like
+    // Array.prototype.toSorted, Symbol features, etc.
+    "lib": ["es2023"],
+
+    // Determines the module system to use when emitting JavaScript.
+    // "nodenext" supports native ECMAScript Modules (ESM) in a Node.js context.
+    // Requires "type": "module" in package.json and proper use of file extensions in imports.
+    "module": "nodenext",
+
+    // Controls how module paths are resolved during development.
+    // "node16" mimics Node.js behavior for ESM resolution (e.g., requires explicit file extensions like .js).
+    // TypeScript does NOT rewrite or infer file extensions when compiling.
+    "moduleResolution": "node16",
+
+    // Defines which ECMAScript version features TypeScript should transpile down to.
+    // "es2022" allows features like class fields and static blocks without downleveling.
+    // It also sets the default lib accordingly.
+    "target": "es2022",
+    
+    // Enables all strict type-checking options (strictNullChecks, noImplicitAny, etc.).
+    // Improves code safety, correctness, and maintainability.
+    "strict": true,
+
+    // Ensures compatibility when importing CommonJS modules using ESM-style syntax.
+    // Wraps the CommonJS export in a synthetic default (e.g., import x from "cjs-module").
+    // Without this, you would have to write: import * as x from "cjs-module".
+    "esModuleInterop": true,
+
+    // Skips type-checking for type declaration files (.d.ts) in node_modules.
+    // Useful to avoid slow builds or issues caused by incorrectly typed external libraries.
+    "skipLibCheck": true,
+
+    // Directory where compiled JavaScript files will be emitted.
+    "outDir": "./dist",
+
+    // Forces each file to be treated as a separate module.
+    // Required when using tools like tsx, swc, or esbuild that compile files independently.
+    // Disallows certain unsafe TS features like const enums or global type inference.
+    "isolatedModules": true,
+
+    // Prevents TypeScript from rewriting your import/export statements.
+    // Encourages use of `import type` and `export type` for purely type-based imports,
+    // and ensures you follow correct syntax for Node.js ESM or CJS environments.
+    "verbatimModuleSyntax": true,
+
+    // emit sourcemap files to help debugg js code
+    // navigate from js to original ts code
+    "sourceMap": true
+  },
+
+  // Folders to exclude from type-checking and compilation.
+  "exclude": ["./node_modules"]
+}

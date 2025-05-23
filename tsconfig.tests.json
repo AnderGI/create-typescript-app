@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.base.json",
+  // Files to include in the TypeScript project: 
+  "include": ["./tests/**/*.ts"],
+}
