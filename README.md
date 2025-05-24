@@ -5,64 +5,35 @@
 ## 📦 Overview
 This project template provides a structured and scalable starting point for TypeScript applications based on:
 
-- **ES Modules** using `module: nodenext`
-- **Domain-Driven Design (DDD)** principles
+- **ES Modules** using `module: nodenext` to natively support ESModules inside NodeJS environment
+- **Domain-Driven Design (DDD)** principles 
 - **Monorepo** support via `pnpm` workspaces and `turborepo`
-- **Modern development** setup with `tsx`, `vitest`, and `eslint`
+- **ES Module supported development** setup with `tsx`, `vitest`, and `typescript-eslint`
 
 ## 🧱 Project Structure
 ```
-create-ts-ddd-esm/
-├── src/
-│   ├── apps/                  # Entry points of the system (backend, landing)
-│   ├── contexts/              # Bounded contexts (domain, application services, etc.)
-│   └── libraries/             # Shared utilities or base libraries
-├── tests/                    # Tests organized by apps/contexts/libraries
-├── dist/                     # Build output (by default structured by app)
+create-ts-ddd-esm/             # root path
+├── src/                       # all source code will be written here
+│   ├── apps/                  # Entrypoints for the different applications (controllers, event subscribers, etc)
+│   ├── contexts/              # Bounded contexts. Source code with as few third-party dependencies as possible
+│   └── libraries/             # Foder for possible npm libraries
+├── tests/                    # Tests. Unit and intration tests. Directory structure organized by replicating src 
+├── dist/                     # Build output
 ├── tsconfig.base.json        # Shared TypeScript config
 ├── tsconfig.json             # Root TS config with references
 ├── turbo.json                # Turborepo build pipeline
 ├── pnpm-workspace.yaml       # pnpm workspace packages
-└── README.md
+└── README.md                 # Templates README
 ```
 
-## ⚙️ Tooling
-- **TypeScript 5.8**
-- **ESM-compatible (NodeNext)**
-- **TurboRepo** for caching and incremental builds
-- **tsx** for running `.ts` files without pre-compilation
-- **Astro** (Starlight template) for the documentation/landing site
-- **Vitest** for unit testing
-- **ESLint** (`typescript-eslint`) for consistent code quality
+##  👀 TO TAKE INTO ACCOUNT
+Native Node.js integrations will be favoured over third-party libraries. This ensures a robust template that is less susceptible to breaking changes from third parties.
 
-## 🚀 Scripts
-Each package contains its own `package.json` and may define:
+## 📚 TODOS
+- [ ] Build a simple use case following outside-in development as a code based example
+- [ ] Build an npm library for creating this structure `npx create-typescript-app`
 
-```json
-"scripts": {
-  "dev": "tsx start.ts",
-  "build": "tsc -b"
-}
-```
-
-At the root:
-```bash
-pnpm dev        # Start all dev servers concurrently
-pnpm build      # Run builds for all packages via turbo
-```
-
-## ✨ Features
-- Strict typing (`strict: true`, `isolatedModules`, etc.)
-- ESM-first (`type: module`, `module: nodenext`, etc.)
-- Support for subpath imports and Node 22+ conventions
-- Modular build outputs (each app/library in `dist`)
-- Ready to publish libraries with declaration maps
-
-## 🛠️ TODO (Post-Scaffold)
-- [ ] Configure CI/CD
-- [ ] Setup versioning strategy for libraries
-- [ ] Integrate testing coverage and reports
-- [ ] Add landing site content
+## 👷 Get Started
 
 ## 📄 License
 MIT
