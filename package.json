@@ -6,8 +6,7 @@
     "build": "turbo run build",
     "lint": "eslint .",
     "test": "vitest --run",
-    "dev": "turbo run dev",
-    "di": "tsx ./src/apps/libraries/di-container/demo.ts"
+    "dev": "turbo run dev"
   },
   "type": "module",
   "keywords": [],
@@ -15,17 +14,17 @@
   "license": "ISC",
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
-    "@eslint/js": "^9.26.0",
-    "@types/express": "^5.0.1",
-    "eslint": "^9.26.0",
+    "@eslint/js": "^9.27.0",
+    "@types/express": "^5.0.2",
+    "eslint": "^9.27.0",
     "tsx": "^4.19.4",
-    "turbo": "^2.5.2",
+    "turbo": "^2.5.3",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.1",
-    "vitest": "^3.1.2"
+    "typescript-eslint": "^8.32.1",
+    "vitest": "^3.1.4"
   },
   "dependencies": {
-    "@types/node": "^22.15.3",
+    "@types/node": "^22.15.21",
     "diod": "^3.0.0",
     "express": "^5.1.0"
   }
