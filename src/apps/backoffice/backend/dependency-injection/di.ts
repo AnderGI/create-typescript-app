@@ -1,5 +1,4 @@
 import type { Newable } from "../Newable.js";
-import type Router from "../routes/Router.js";
 
 interface MapKey  {
   name:string;
@@ -89,13 +88,6 @@ container.add({
   path: './../routes/status/StatusGetRouteHandler.js'
 })
 
-container.addLabel('routeRegistrar', 'status-get-route')
-
-container.get('router').then(async router => {
-  await (router as unknown as Router).init();
-  console.log(router);
-});
-
-
+container.addLabel('routeHandler', 'status-get-route')
 
 export default container;
