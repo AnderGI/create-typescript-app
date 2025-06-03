@@ -3,6 +3,5 @@
   "files": [],
   "references": [
     { "path": "./src/apps/backoffice/backend" },
-    { "path": "./src/apps/landing" }
   ]
 }
