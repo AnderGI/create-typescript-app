@@ -1,5 +1,7 @@
-  import {createServer, type  Server } from "http";
-  import Router from "./routes/Router.js";
+import {createServer, type  Server } from "http";
+import Router from "./routes/Router.js";
+import container from "./dependency-injection/di.js";
+import type RouterHandler from "./routes/RouterHandler.js";
 
 export default class HttpServer {
       private readonly server:Server;
@@ -10,9 +12,12 @@ export default class HttpServer {
         this.server = createServer();
       }
     
-      public start() {
+      async start() {
         this.server.listen(this.desiredPort);
-    
+        
+        const routeHandlers = await container.findByLabel('routeHandler') as unknown as RouterHandler[]
+        this.router.addRoutes(routeHandlers)
+
         this.server.on('request', (req, res) => {
           this.router.handle(req, res);
         });
