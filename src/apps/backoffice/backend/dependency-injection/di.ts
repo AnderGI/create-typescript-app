@@ -1,9 +1,12 @@
+import { createReadStream } from "fs";
 import type { Newable } from "../Newable.js";
+import { createInterface } from "readline";
 
 interface MapKey  {
   name:string;
   dependencies: string[];
   path: string;
+  label?: string;
 }
 
 
@@ -58,36 +61,44 @@ class DIContainer {
     
     return new Class(...dependencyList)  
   }
+
+public async load(pathToNDConfigFile: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const readStream = createReadStream(pathToNDConfigFile, { encoding: "utf-8" });
+    const readLine = createInterface(readStream);
+
+    readLine.on("line", (line: string) => {
+      const trimmed = line.trim();
+      if (!trimmed) return;
+
+      try {
+        const dependency = JSON.parse(trimmed) as MapKey;
+        this.add(dependency);
+
+        if (dependency.label) {
+          this.addLabel(dependency.label, dependency.name);
+        }
+      } catch (err) {
+        readLine.close(); // Cierra el stream para evitar seguir leyendo
+        reject(new Error(`Error parsing line: ${line}\n${(err as Error).message}`));
+      }
+    });
+
+    readLine.on("close", () => {
+      resolve();
+    });
+
+    readLine.on("error", (err) => {
+      reject(new Error(`Error reading config file: ${(err as Error).message}`));
+    });
+  });
 }
 
 
-// Add depenedencies here below
+
+}
+
+
 const container = new DIContainer();
-
-container.add({
-  name: 'http-server',
-  dependencies: ['router'],
-  path: './../HttpServer.js'
-})
-
-container.add({
-  name: 'backoffice-backend-app',
-  dependencies: ['http-server'],
-  path: './../BackofficeBackendApp.js'
-})
-
-container.add({
-  name: 'router',
-  dependencies: [],
-  path: './../routes/Router.js'
-})
-
-container.add({
-  name: 'status-get-route',
-  dependencies: [],
-  path: './../routes/status/StatusGetRouteHandler.js'
-})
-
-container.addLabel('routeHandler', 'status-get-route')
 
 export default container;
