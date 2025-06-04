@@ -2,6 +2,7 @@ import BackofficeBackendApp from "./BackofficeBackendApp.js";
 import container from "./dependency-injection/di.js";
 
 try {
+	await container.load("./dependency-injection/config.ndjson")
 	const app = await container.get('backoffice-backend-app') as unknown as BackofficeBackendApp
 	app.start();
 } catch (e) {
