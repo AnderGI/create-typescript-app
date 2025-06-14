@@ -6,7 +6,8 @@
     "build": "turbo run build",
     "lint": "eslint .",
     "test": "vitest --run",
-    "dev": "turbo run dev"
+    "dev": "turbo run dev",
+    "test:features": "bash ./tests/apps/backoffice/backend/setup.sh"
   },
   "type": "module",
   "keywords": [],
