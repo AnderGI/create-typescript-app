@@ -3,9 +3,9 @@ import type { RouteHandler } from "./RouteHandler.js";
 import RouterHandlers from "./RouteHandlers.js";
 
 export class RouteNode {
-  readonly paths = new Map<string, RouteNode>(); 
-  readonly handlers: RouterHandlers  = new RouterHandlers();
-  readonly middlewares: ((req:IncomingMessage, res:ServerResponse, next:() => void) => void)[] = [];
+  private readonly paths = new Map<string, RouteNode>(); 
+  private readonly handlers: RouterHandlers  = new RouterHandlers();
+  private readonly middlewares: ((req:IncomingMessage, res:ServerResponse, next:() => void) => void)[] = [];
 
   constructor(readonly pathName:string){}
 
