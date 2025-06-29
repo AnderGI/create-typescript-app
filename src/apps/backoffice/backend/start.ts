@@ -1,7 +1,7 @@
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 import BackofficeBackendApp from "./BackofficeBackendApp.js";
 import container from "./dependency-injection/di.js";
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
 try {
 
@@ -11,7 +11,7 @@ try {
 	const configPath = join(__dirname, 'dependency-injection', 'config.ndjson');
 
 	await container.load(configPath)
-	const app = await container.get('backoffice-backend-app') as unknown as BackofficeBackendApp
+	const app = new BackofficeBackendApp()
 	app.start();
 } catch (e) {
 	console.log(e);
