@@ -1,25 +1,27 @@
 import {createServer, type  Server } from "http";
-import Router from "./routes/Router.js";
-import container from "./dependency-injection/di.js";
-import type RouterHandler from "./routes/RouterHandler.js";
+import  AppRoutes from "./router-tree/AppRoutes.js";
 
 export default class HttpServer {
-      private readonly server:Server;
-      private readonly desiredPort:number = 3000;
-      private readonly dinamyPortAllocation:number = 0;
-    
-      constructor(private readonly router:Router){
+  private readonly server:Server;
+  private readonly desiredPort:number = 3000;
+  private readonly dinamyPortAllocation:number = 0;
+  private readonly router:AppRoutes;
+  
+  constructor(){
         this.server = createServer();
-      }
+        this.router = new AppRoutes()
+  }
     
-      async start() {
+    async start() {
         this.server.listen(this.desiredPort);
-        
-        const routeHandlers = await container.findByLabel('routeHandler') as unknown as RouterHandler[]
-        this.router.addRoutes(routeHandlers)
-
+        this.router.register()
         this.server.on('request', (req, res) => {
-          this.router.handle(req, res);
+          try {
+            this.router.handle(req, res);
+          } catch {
+            res.writeHead(404)
+            res.end()
+          }
         });
     
     
