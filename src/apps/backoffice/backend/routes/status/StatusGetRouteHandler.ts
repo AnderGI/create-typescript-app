@@ -1,20 +1,20 @@
+ 
 import type { IncomingMessage, ServerResponse } from "http";
-import type RouterHandler from "../RouterHandler.js";
+import { RouteHandler } from "../../router-tree/RouteHandler.js";
 
-export default class StatusGetRouteHandler implements RouterHandler{
-  readonly method:string = 'GET';
-  readonly path:string = '/status';
-
-  public handle(req:IncomingMessage,res:ServerResponse) {
+export default class StatusGetRouteHandler extends RouteHandler{
+  public async handle(req:IncomingMessage,res:ServerResponse): Promise<void> {
     res.writeHead(200);
     res.end()
+    
   }
 
-  public data() {
-    return {
-      method: this.method,
-      path: this.path
-    }
+  method(): "get" {
+    return "get"
+  }
+
+  uri() {
+    return  '/app/status';
   }
 
 }
