@@ -7,7 +7,9 @@
     "lint": "eslint .",
     "test": "vitest --run",
     "dev": "turbo run dev",
-    "test:features": "bash ./tests/apps/backoffice/backend/setup.sh"
+    "test:features": "bash ./tests/apps/backoffice/backend/setup.sh",
+    "test:features:routeTree": "vitest ./tests/apps/backoffice/backend/router-tree/**.test.ts"
+
   },
   "type": "module",
   "keywords": [],
