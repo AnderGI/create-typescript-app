@@ -17,7 +17,7 @@ export default class AppRoutes {
     const routeHandlers = await container.findByLabel('routeHandler') as unknown as RouteHandler[]
     routeHandlers.forEach(_ => {
       if(_.method() === "get") {
-        this.routeTree.get(_.uri(), _.handle)
+        this.routeTree.get(_.uri(), _)
       }
     })
 
