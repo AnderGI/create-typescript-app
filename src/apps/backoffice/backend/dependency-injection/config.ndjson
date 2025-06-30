@@ -1,4 +1,1 @@
-{ "name": "http-server","dependencies": ["router"],"path": "./../HttpServer.js" }
-{ "name": "backoffice-backend-app", "dependencies": ["http-server"], "path": "./../BackofficeBackendApp.js" }
-{ "name": "router", "dependencies": [], "path": "./../routes/Router.js" }
 { "name": "status-get-route", "dependencies": [], "path": "./../routes/status/StatusGetRouteHandler.js", "label": "routeHandler" }
