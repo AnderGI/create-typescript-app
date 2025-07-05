@@ -1,5 +1,5 @@
 import { Command } from './Command';
 
-export interface CommandBus {
+export default interface  CommandBus {
   dispatch(command: Command): Promise<void>;
 }
