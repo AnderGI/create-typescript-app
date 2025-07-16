@@ -1,8 +1,8 @@
 import { type  Server } from "http";
 import express, { Router, Request, Response, NextFunction } from 'express';
 import container from "./dependency-injection/di";
-import { RouteHandler } from "./router-tree/RouteHandler";
-import ZaladoAPIGuideBasedRouteValidator from "./router-tree/ZaladoAPIGuideBasedRouteValidator";
+import ZaladoAPIGuideBasedRouteValidator from "./routes/ZaladoAPIGuideBasedRouteValidator";
+import RouteHandler from "./routes/RouterHandler";
 
 export default class ExpressHttpServer {
   private readonly express: express.Express;
