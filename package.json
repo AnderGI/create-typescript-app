@@ -8,8 +8,9 @@
     "test": "vitest --run",
     "dev": "turbo run dev",
     "test:features": "bash ./tests/apps/backoffice/backend/setup.sh",
-    "test:features:routeTree": "vitest ./tests/apps/backoffice/backend/router-tree/**.test.ts"
-
+    "test:features:routeTree": "vitest ./tests/apps/backoffice/backend/router-tree/**.test.ts",
+    "demo": "tsx demo.ts",
+    "demo2": "tsx demo2.ts"
   },
   "type": "module",
   "keywords": [],
@@ -18,6 +19,7 @@
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
     "@eslint/js": "^9.27.0",
+    "@types/express": "^5.0.3",
     "eslint": "^9.27.0",
     "tsx": "^4.19.4",
     "turbo": "^2.5.3",
@@ -26,6 +28,8 @@
     "vitest": "^3.1.4"
   },
   "dependencies": {
-    "@types/node": "^22.15.21"
+    "@types/node": "^22.15.21",
+    "express": "^5.1.0",
+    "http-status": "^2.1.0"
   }
 }
