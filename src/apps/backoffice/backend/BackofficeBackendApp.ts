@@ -1,9 +1,9 @@
-import HttpServer from './HttpServer.js';
+import ExpressHttpServer from './ExpressHttpServer.js';
 
 export default class BackofficeBackendApp {
-  private readonly server: HttpServer
+  private readonly server: ExpressHttpServer
   constructor(){
-    this.server = new HttpServer()
+    this.server = new ExpressHttpServer()
   }
 
   public start() {
