@@ -1,7 +1,5 @@
-import type { IncomingMessage, ServerResponse } from "http";
+import { Router } from "express";
 
 export abstract class RouteHandler {
-    abstract uri(): string;
-    abstract method(): "get" | "put";
-    abstract handle(req:IncomingMessage, res:ServerResponse): void;
+    abstract register(router:Router): void;
 }
