@@ -1,1 +1,0 @@
-{ "name": "status-get-route", "dependencies": [], "path": "./../routes/status/StatusGetRouteHandler.js", "label": "routeHandler" }
