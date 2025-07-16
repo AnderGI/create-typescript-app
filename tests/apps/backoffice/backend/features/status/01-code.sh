@@ -14,7 +14,7 @@ com
 echo -e "\tchecking status code..."
 echo -e "\texpected to be 200"
 
-status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/app/status)
+status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5000/app/status)
 
 if [ "$status" -eq 200 ]; then
   echo -e "\t✅ Status OK ($status)"
