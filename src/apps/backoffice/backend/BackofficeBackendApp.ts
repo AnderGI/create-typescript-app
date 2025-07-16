@@ -1,3 +1,4 @@
+import "reflect-metadata/lite";
 import ExpressHttpServer from './ExpressHttpServer.js';
 
 export default class BackofficeBackendApp {
