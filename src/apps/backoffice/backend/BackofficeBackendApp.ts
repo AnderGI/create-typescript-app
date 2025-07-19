@@ -1,17 +1,19 @@
-import "reflect-metadata/lite";
 import ExpressHttpServer from './ExpressHttpServer.js';
 
 export default class BackofficeBackendApp {
-  private readonly server: ExpressHttpServer
-  constructor(){
-    this.server = new ExpressHttpServer()
+  constructor(private readonly server: ExpressHttpServer){}
+
+  public async start() {
+    await this.server.start();
   }
 
-  public start() {
-    this.server.start();
+  public registerRoutes() {
+    this.server.registerRoutes()
   }
 
-  public stop() {
+  public async stop() {
     this.server.stop();
   }
+
+
 }

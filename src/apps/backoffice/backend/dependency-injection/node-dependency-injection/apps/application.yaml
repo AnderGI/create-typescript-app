@@ -1,0 +1,21 @@
+services:
+  Apps.Backoffice.Backend.RouteValidator:
+    class: ../../../routes/ZaladoAPIGuideBasedRouteValidator
+    arguments: []
+  Apps.Backoffice.Backend.controllers.status.StatusGetController:
+    class: ../../../controllers/status/StatusGetController
+    arguments: []
+  Apps.Backoffice.Backend.routes.status.StatusGetRouteHandler:
+    class: ../../../routes/status/StatusGetRouteHandler
+    arguments: ['@Apps.Backoffice.Backend.controllers.status.StatusGetController']
+    tags: [{'name': 'route-handlers'}]
+  Apps.Backoffice.Backend.RouteHandlers:
+    class: ../../../routes/RouteHandlers
+    arguments: ['!tagged route-handlers']
+  Apps.Backoffice.Backend.ExpressHttpServer:
+    class: ../../../ExpressHttpServer
+    arguments: ['@Apps.Backoffice.Backend.RouteValidator', '@Apps.Backoffice.Backend.RouteHandlers']
+  Apps.Backoffice.Backend.BackofficeBackendApp:
+    class: ../../../BackofficeBackendApp
+    arguments: ['@Apps.Backoffice.Backend.ExpressHttpServer']
+  

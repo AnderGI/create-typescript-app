@@ -1,13 +1,13 @@
-import RouteHandler  from  "../RouterHandler.js"
+import RouteHandler  from  "./../RouterHandler.js"
 import { Router, Request, Response } from "express";
-import StatusGetController from '../../controllers/status/StatusGetController.js'
-import container from "../../dependency-injection/diod/container.js";
+import StatusGetController from './../../controllers/status/StatusGetController.js'
 
-export default class StatusGetRouteHandler extends RouteHandler {
+export default class StatusGetRouteHandler implements RouteHandler {
+  constructor(private readonly controller: StatusGetController) {}
+
   register(router: Router): void {
-    const controller = container.get(StatusGetController) as StatusGetController
     router.get('/app/status', (req:Request, res: Response) => {
-      return controller.run(req, res);
+      return this.controller.run(req, res);
     })
   }
 
