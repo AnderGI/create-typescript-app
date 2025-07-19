@@ -4,6 +4,6 @@
     "composite": true,
     "declaration": true,
     "outDir": "../../../../dist/apps/backoffice/backend",
-    "rootDir": "."
+    "rootDir": "./../../../../../."
   }
 }
